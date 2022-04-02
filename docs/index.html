@@ -510,7 +510,7 @@
                 <div class="d-block w-100 p-5">
                     <div class="row justify-content-center">
                         <div class="col-3 fw-bold tNamaz mb-2 me-2 border border-primary p-2 rounded-pill d-flex align-items-center"><i class='fa fa-moon-o ps-2 me-3 text-primary fs-4' aria-hidden='true'></i>Namaz</div>
-                        <div class="col-3 fw-bold tLunch mb-2 me-2 border border-primary p-2 rounded-pill d-flex align-items-center"><i class='fa fa-cutlery ps-2 me-3 text-primary fs-4' aria-hidden='true'></i>Lunch/Dinner</div>
+                        <div class="col-3 fw-bold tLunch mb-2 me-2 border border-primary p-2 rounded-pill d-flex align-items-center"><i class='fa fa-cutlery ps-2 me-3 text-primary fs-4' aria-hidden='true'></i>Sehri/Iftari</div>
                         <div class="col-3 fw-bold tSound mb-2  border border-primary p-2 rounded-pill d-flex align-items-center"><i class='fa fa-volume-up ps-2 me-3 text-primary fs-4' aria-hidden='true'></i>Sounds</div>
                     </div>
                 </div>
@@ -552,23 +552,23 @@
                     <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
                     <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
                 </svg>
-                <h1 class="text-center mb-0 text-white bg-primary px-5 py-3"><i class='fa fa-cutlery me-3' aria-hidden='true'></i>Lunch / Dinner</h1>
+                <h1 class="text-center mb-0 text-white bg-primary px-5 py-3"><i class='fa fa-cutlery me-3' aria-hidden='true'></i>Sehri / Iftari</h1>
                 <div class="d-block w-100 p-5">
                     <div class="row mb-4">
                         <div class="col-4"></div>
                         <div class="form-check form-switch col-4">
                             <input class="form-check-input" type="checkbox" id="lunchEnable">
-                            <label class="form-check-label user-select-none" for="lunchEnable">Enable Lunch & Dinner</label>
+                            <label class="form-check-label user-select-none" for="lunchEnable">Enable Sehri & Iftari</label>
                         </div>
                     </div>
                     <div class="row lunchx">
-                        <div class="col-4 fw-bold text-end mb-3">Lunch </div>
+                        <div class="col-4 fw-bold text-end mb-3">Sehri </div>
                         <div class="col-8">
                             <input id="lunch" class="text-center fw-bold text-success" type="text" value="00:00:00">
                         </div>
                     </div>
                     <div class="row dinnerx">
-                        <div class="col-4 mb-3 fw-bold text-end">Dinner </div>
+                        <div class="col-4 mb-3 fw-bold text-end">Iftari </div>
                         <div class="col-8"><input id="dinner" class="text-center fw-bold text-success" type="text" value="00:00:00"></div>
                     </div>
                     <div class="d-block w-100 border-top mt-5 py-3 text-center">
@@ -589,7 +589,7 @@
                     </div>
                     <div class="form-check form-switch mb-2">
                         <input class="form-check-input" type="checkbox" id="lunchSound">
-                        <label class="form-check-label user-select-none" for="lunchSound">Lunch/Dinner Sound</label>
+                        <label class="form-check-label user-select-none" for="lunchSound">Sehri/Iftari Sound</label>
                     </div>
                     <div class="form-check form-switch mb-2">
                         <input class="form-check-input" type="checkbox" id="restSound">
@@ -771,7 +771,7 @@
             } else {
                 document.getElementById("lunchSound").checked = true;
             }
-            var lunch = "14:05:00";
+            var lunch = "03:45:00";
             if (readCookie("lunch")) {
                 lunch = readCookie("lunch");
             } else {
@@ -779,7 +779,7 @@
             }
             document.getElementById("lunch").value = lunch;
 
-            var dinner = "21:05:00";
+            var dinner = "18:45:00";
             if (readCookie("dinner")) {
                 dinner = readCookie("dinner");
             } else {
@@ -932,11 +932,11 @@
                 }
                 dinner = readCookie("dinner");
                 if (tz.indexOf(dinner) != -1 && !readCookie("lunchEnable")) {
-                    alert("<audio style='display:none;' controls autoplay><source src='" + lSound + "' type='audio/mpeg'></audio><i class='fa fa-cutlery mb-3 text-danger' style='font-size:3rem' aria-hidden='true'></i><br>Dinner Time", "Go now!");
+                    alert("<audio style='display:none;' controls autoplay><source src='" + lSound + "' type='audio/mpeg'></audio><i class='fa fa-cutlery mb-3 text-danger' style='font-size:3rem' aria-hidden='true'></i><br>Iftari Time", "Go now!");
                 }
                 lunch = readCookie("lunch");
                 if (tz.indexOf(lunch) != -1 && !readCookie("lunchEnable")) {
-                    alert("<audio style='display:none;' controls autoplay><source src='" + lSound + "' type='audio/mpeg'></audio><i class='fa fa-cutlery mb-3 text-danger' style='font-size:3rem' aria-hidden='true'></i><br>Lunch Time", "Go now!");
+                    alert("<audio style='display:none;' controls autoplay><source src='" + lSound + "' type='audio/mpeg'></audio><i class='fa fa-cutlery mb-3 text-danger' style='font-size:3rem' aria-hidden='true'></i><br>Sehri Time", "Go now!");
                 }
 
                 // If time is set with "t" parameter
