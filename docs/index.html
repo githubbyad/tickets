@@ -582,6 +582,19 @@
             height: 38px !important;
             padding-bottom: 0 !important;
         }
+        
+        .tope:hover {
+            height: 160px !important;
+            transition: ease-in-out height;
+        }
+        
+        .tope:hover~#topy {
+            height: calc(100vh - 160px) !important;
+        }
+        
+        .tope:hover~#minimize {
+            display: none !important;
+        }
     </style>
 </head>
 
@@ -1210,14 +1223,6 @@
                 tickets.setAttribute("style", "height:calc(100vh - 160px)");
             }
         });
-        setInterval(function() {
-            if (topx.classList.contains("tope")) {
-                topx.classList.add("topi");
-                topx.classList.remove("tope");
-                minimize.classList.remove("minimizeTop");
-                tickets.setAttribute("style", "height:calc(100vh - 160px)");
-            }
-        }, 300000);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>
