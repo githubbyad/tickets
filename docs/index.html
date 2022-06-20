@@ -118,7 +118,7 @@
         #staff {
             height: 112px;
             background: #c9c9c9;
-            transform: translate(95px, 4px);
+            transform: translate(50px, 4px);
             position: relative;
             z-index: 2;
             padding-left: 10px !important;
@@ -164,7 +164,6 @@
             left: 0;
             right: 0;
             font-weight: bold;
-            text-align: center;
         }
         
         #shift iframe,
@@ -215,15 +214,15 @@
         
         #ticketcell {
             height: 210px;
-            transform: translate(-50px, -62px);
-            width: 25vw !important;
+            transform: translate(-13px, -62px);
             transition: 300ms ease-in-out;
             background-color: #ddd;
+            width: 320px !important;
         }
         
         #ticketcell:hover {
             transition: 400ms ease-in-out;
-            transform: translate(-8px, -60px);
+            /* transform: translate(-8px, -60px); */
         }
         
         #pticketcell {
@@ -244,7 +243,8 @@
             z-index: 1;
             background: #c9c9c9;
             border-bottom-left-radius: 0;
-            width: 16vw;
+            left: 50%;
+            transform: translateX(-50%);
             line-height: 25px;
         }
         
@@ -567,6 +567,16 @@
             overflow: hidden;
             border-bottom-left-radius: 10px;
         }
+        
+        #shift,
+        #ctime {
+            width: 16%;
+        }
+        
+        #live,
+        #past {
+            width: 23%;
+        }
     </style>
 </head>
 
@@ -575,16 +585,17 @@
         <div class="cont container-fluid px-0">
             <div class="row mx-0">
                 <div id="topx" class="row col-12 mx-0 d-flex" style="user-select: none;">
+                    <div class="col-x px-1" id="shift">
+                        <div class="w-100">
+                            <p><i class='fa fa-user' aria-hidden='true'></i> Online staffs</p>
+                            <div id="shiftCover"></div>
+                            <iframe id="staff" src="https://bulletlink.one/bulletlink_online_staff.asp" scrolling="no" class="border-0 w-100"></iframe>
+                        </div>
+                    </div>
                     <div class="col-x px-1" id="live">
                         <div class="w-100">
                             <p><i class="fa fa-list-ul" aria-hidden="true"></i> Live Tickets</p>
                             <iframe id="ticketcell" src="https://bulletlink.one/bulletlink_tickets.asp?cell=0" scrolling="no" class="border-0 w-100"></iframe>
-                        </div>
-                    </div>
-                    <div class="col-x px-1" id="past">
-                        <div class="w-100">
-                            <p><i class="fa fa-check-square" aria-hidden="true"></i> Review Past Tickets</p>
-                            <iframe id="pticketcell" src="https://bulletlink.one/bulletlink_tickets_review.asp" scrolling="no" class="border-0 w-100"></iframe>
                         </div>
                     </div>
                     <div class="col-x px-1" id="cbuzzer">
@@ -593,17 +604,16 @@
                             <iframe id="buzzer" src="https://bulletlink.one/ticket_status.asp" scrolling="no" class="border-0 w-100"></iframe>
                         </div>
                     </div>
+                    <div class="col-x px-1" id="past">
+                        <div class="w-100">
+                            <p><i class="fa fa-check-square" aria-hidden="true"></i> Review Past Tickets</p>
+                            <iframe id="pticketcell" src="https://bulletlink.one/bulletlink_tickets_review.asp" scrolling="no" class="border-0 w-100"></iframe>
+                        </div>
+                    </div>
                     <div class="col-x px-1" id="ctime">
                         <div class="w-100">
                             <p>Time</p>
                             <div id="time"></div>
-                        </div>
-                    </div>
-                    <div class="col-x px-1" id="shift">
-                        <div class="w-100">
-                            <p><i class='fa fa-user' aria-hidden='true'></i> Online staffs</p>
-                            <div id="shiftCover"></div>
-                            <iframe id="staff" src="https://bulletlink.one/bulletlink_online_staff.asp" scrolling="no" class="border-0 w-100"></iframe>
                         </div>
                     </div>
 
