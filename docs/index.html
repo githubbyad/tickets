@@ -551,7 +551,7 @@
         }
         
         .minimizeTop {
-            top: -8px !important;
+            top: 30px !important;
         }
         
         .col-x .w-100 {
@@ -577,6 +577,11 @@
         #past {
             width: 23%;
         }
+        
+        .tope {
+            height: 38px !important;
+            padding-bottom: 0 !important;
+        }
     </style>
 </head>
 
@@ -584,7 +589,7 @@
     <div id="ticketSpan">
         <div class="cont container-fluid px-0">
             <div class="row mx-0">
-                <div id="topx" class="row col-12 mx-0 d-flex" style="user-select: none;">
+                <div id="topx" class="row col-12 mx-0 d-flex topi" style="user-select: none;">
                     <div class="col-x px-1" id="shift">
                         <div class="w-100">
                             <p><i class='fa fa-user' aria-hidden='true'></i> Online staffs</p>
@@ -1193,22 +1198,22 @@
         var topx = document.getElementById("topx");
         var tickets = document.getElementById("tickets");
         minimize.addEventListener("click", function() {
-            if (topx.classList.contains("d-flex")) {
-                topx.classList.add("d-none");
-                topx.classList.remove("d-flex");
+            if (topx.classList.contains("topi")) {
+                topx.classList.add("tope");
+                topx.classList.remove("topi");
                 minimize.classList.add("minimizeTop");
-                tickets.setAttribute("style", "height:100vh");
-            } else if (topx.classList.contains("d-none")) {
-                topx.classList.add("d-flex");
-                topx.classList.remove("d-none");
+                tickets.setAttribute("style", "height:calc(100vh - 38px)");
+            } else if (topx.classList.contains("tope")) {
+                topx.classList.add("topi");
+                topx.classList.remove("tope");
                 minimize.classList.remove("minimizeTop");
                 tickets.setAttribute("style", "height:calc(100vh - 160px)");
             }
         });
         setInterval(function() {
-            if (topx.classList.contains("d-none")) {
-                topx.classList.add("d-flex");
-                topx.classList.remove("d-none");
+            if (topx.classList.contains("tope")) {
+                topx.classList.add("topi");
+                topx.classList.remove("tope");
                 minimize.classList.remove("minimizeTop");
                 tickets.setAttribute("style", "height:calc(100vh - 160px)");
             }
