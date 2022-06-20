@@ -118,7 +118,7 @@
         #staff {
             height: 112px;
             background: #c9c9c9;
-            transform: translate(0, 4px);
+            transform: translate(95px, 4px);
             position: relative;
             z-index: 2;
             padding-left: 10px !important;
@@ -143,10 +143,9 @@
             display: flex;
             align-items: center;
             flex-direction: column;
-            border: 4px solid white;
             border-top-width: 0;
             overflow: hidden;
-            background: #c9c9c9;
+            background: #fff;
         }
         
         #shift p,
@@ -165,6 +164,7 @@
             left: 0;
             right: 0;
             font-weight: bold;
+            text-align: center;
         }
         
         #shift iframe,
@@ -202,20 +202,20 @@
         #buzzer {
             height: 156px;
             background: #c9c9c9;
-            transform: translate(0, 20px) scale(0.4);
+            transform: translate(-190px, 20px) scale(0.4);
             box-sizing: border-box;
             width: 640px !important;
             transition: 200ms ease-in-out;
         }
         
         #buzzer:hover {
-            transform: translate(0px, 40px) scale(1);
+            transform: translate(-190px, 40px) scale(1);
             transition: 300ms ease-in-out;
         }
         
         #ticketcell {
             height: 210px;
-            transform: translate(-35px, -60px);
+            transform: translate(-50px, -62px);
             width: 25vw !important;
             transition: 300ms ease-in-out;
             background-color: #ddd;
@@ -223,7 +223,7 @@
         
         #ticketcell:hover {
             transition: 400ms ease-in-out;
-            transform: translate(33px, -60px);
+            transform: translate(-8px, -60px);
         }
         
         #pticketcell {
@@ -403,7 +403,7 @@
             position: absolute;
             top: 36px;
             z-index: 9;
-            left: 173px;
+            right: 0;
         }
         
         #live:before {
@@ -425,7 +425,7 @@
             float: right;
             top: 7px;
             position: absolute;
-            left: 170px;
+            right: 10px;
             text-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
         }
         
@@ -519,14 +519,53 @@
         }
         
         #topx {
-            height: 156px;
+            height: 160px;
             overflow: hidden;
-            border-bottom: 4px solid black;
+            padding-bottom: 10px;
             box-sizing: border-box;
         }
         
         .col-x {
             width: 20%;
+        }
+        
+        #minimize {
+            position: fixed;
+            top: 148px;
+            z-index: 999;
+            background: black;
+            width: auto;
+            left: 50%;
+            border-bottom-right-radius: 50px;
+            justify-content: center;
+            box-sizing: border-box;
+            cursor: pointer;
+            border-bottom-left-radius: 50px;
+            transform: translateX(-50%);
+        }
+        
+        #minimize i {
+            color: orange;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .minimizeTop {
+            top: 0 !important;
+        }
+        
+        .col-x .w-100 {
+            float: left;
+            border: 2px solid #000;
+            background: #c9c9c9;
+            display: block;
+            position: relative;
+            z-index: 5;
+            top: 0;
+            height: 100%;
+            border-bottom-right-radius: 10px;
+            overflow: hidden;
+            border-bottom-left-radius: 10px;
         }
     </style>
 </head>
@@ -535,32 +574,43 @@
     <div id="ticketSpan">
         <div class="cont container-fluid px-0">
             <div class="row mx-0">
-                <div id="topx" class="row col-12 mx-0" style="user-select: none;">
-                    <div class="col-x" id="live">
-                        <p><i class="fa fa-list-ul" aria-hidden="true"></i> Live Tickets</p>
-                        <iframe id="ticketcell" src="https://bulletlink.one/bulletlink_tickets.asp?cell=0" scrolling="no" class="border-0 w-100"></iframe>
+                <div id="topx" class="row col-12 mx-0 d-flex" style="user-select: none;">
+                    <div class="col-x px-1" id="live">
+                        <div class="w-100">
+                            <p><i class="fa fa-list-ul" aria-hidden="true"></i> Live Tickets</p>
+                            <iframe id="ticketcell" src="https://bulletlink.one/bulletlink_tickets.asp?cell=0" scrolling="no" class="border-0 w-100"></iframe>
+                        </div>
                     </div>
-                    <div class="col-x" id="past">
-                        <p><i class="fa fa-check-square" aria-hidden="true"></i> Review Past Tickets</p>
-                        <iframe id="pticketcell" src="https://bulletlink.one/bulletlink_tickets_review.asp" scrolling="no" class="border-0 w-100"></iframe>
+                    <div class="col-x px-1" id="past">
+                        <div class="w-100">
+                            <p><i class="fa fa-check-square" aria-hidden="true"></i> Review Past Tickets</p>
+                            <iframe id="pticketcell" src="https://bulletlink.one/bulletlink_tickets_review.asp" scrolling="no" class="border-0 w-100"></iframe>
+                        </div>
                     </div>
-                    <div class="col-x" id="cbuzzer">
-                        <p><i class="fa fa-volume-up" aria-hidden="true"></i> Buzzer</p>
-                        <iframe id="buzzer" src="https://bulletlink.one/ticket_status.asp" scrolling="no" class="border-0 w-100"></iframe>
+                    <div class="col-x px-1" id="cbuzzer">
+                        <div class="w-100">
+                            <p><i class="fa fa-volume-up" aria-hidden="true"></i> Buzzer</p>
+                            <iframe id="buzzer" src="https://bulletlink.one/ticket_status.asp" scrolling="no" class="border-0 w-100"></iframe>
+                        </div>
                     </div>
-                    <div class="col-x" id="ctime">
-                        <p>Time</p>
-                        <div id="time"></div>
+                    <div class="col-x px-1" id="ctime">
+                        <div class="w-100">
+                            <p>Time</p>
+                            <div id="time"></div>
+                        </div>
                     </div>
-                    <div class="col-x" id="shift">
-                        <p><i class='fa fa-user' aria-hidden='true'></i> Online staffs</p>
-                        <div id="shiftCover"></div>
-                        <iframe id="staff" src="https://bulletlink.one/bulletlink_online_staff.asp" scrolling="no" class="border-0 w-100"></iframe>
+                    <div class="col-x px-1" id="shift">
+                        <div class="w-100">
+                            <p><i class='fa fa-user' aria-hidden='true'></i> Online staffs</p>
+                            <div id="shiftCover"></div>
+                            <iframe id="staff" src="https://bulletlink.one/bulletlink_online_staff.asp" scrolling="no" class="border-0 w-100"></iframe>
+                        </div>
                     </div>
 
                 </div>
+                <div id="minimize"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
                 <div id="topy" class="ticket_page col-12 position-relative bg-body px-0" style="z-index: 2;">
-                    <iframe id="tickets" src="https://bulletlink.one/bulletlink_tickets.asp?" class="border-0 w-100 px-0" style="height: calc(100vh - 156px);"></iframe>
+                    <iframe id="tickets" src="https://bulletlink.one/bulletlink_tickets.asp?" class="border-0 w-100 px-0" style="height: calc(100vh - 160px);"></iframe>
                 </div>
             </div>
         </div>
@@ -764,18 +814,18 @@
 
             // Shift Text
             if (window.location.href.indexOf("?t=") != -1) {
-                document.getElementById('ctime').children[0].innerHTML = "<p><i class='fa fa-clock-o' aria-hidden='true'></i> Time Remaining</p>";
+                document.getElementById('ctime').children[0].children[0].outerHTML = "<p><i class='fa fa-clock-o' aria-hidden='true'></i> Time Remaining</p>";
             }
-            if (window.location.href.indexOf("?t=04:00") != -1) {
-                document.getElementById('shift').innerHTML = "<i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge rounded-pill bg-danger ms-2'>Night</span>";
+            if (window.location.href.indexOf("?t=03:00") != -1) {
+                document.getElementById('shift').children[0].children[0].outerHTML = "<i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge rounded-pill bg-danger ms-2'>Night</span>";
                 // document.getElementsByClassName('ticketPage')[0].setAttribute('id', 'shift-dark');
             }
-            if (window.location.href.indexOf("?t=12:00") != -1) {
-                document.getElementById('shift').innerHTML = "<i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge rounded-pill bg-danger ms-2'>Night</span>";
+            if (window.location.href.indexOf("?t=11:00") != -1) {
+                document.getElementById('shift').children[0].children[0].outerHTML = "<p><i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge rounded-pill bg-danger ms-2'>Night</span></p>";
                 // document.getElementsByClassName('ticketPage')[0].setAttribute('id', 'shift-success');
             }
-            if (window.location.href.indexOf("?t=20:00") != -1) {
-                document.getElementById('shift').innerHTML = "<i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge rounded-pill bg-danger ms-2'>Day</span>";
+            if (window.location.href.indexOf("?t=19:30") != -1) {
+                document.getElementById('shift').children[0].children[0].outerHTML = "<p><i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge rounded-pill bg-danger ms-2'>Day</span></p>";
                 //  document.getElementsByClassName('ticketPage')[0].setAttribute('id', 'shift-secondary');
             }
 
@@ -860,18 +910,18 @@
             // Buzzer - Refresh in 15 seconds
             setInterval(function() {
                 buzzer.src = buzzer.src;
-                document.getElementById('cbuzzer').children[0].innerHTML = '<p><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Buzzer</p>';
+                document.getElementById('cbuzzer').children[0].children[0].outerHTML = '<p><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Buzzer</p>';
                 setTimeout(function() {
-                    document.getElementById('cbuzzer').children[0].innerHTML = '<p><i class="fa fa-volume-up" aria-hidden="true"></i> Buzzer</p>';
+                    document.getElementById('cbuzzer').children[0].children[0].outerHTML = '<p><i class="fa fa-volume-up" aria-hidden="true"></i> Buzzer</p>';
                 }, 3000);
             }, 15000);
 
             // Ticket Page - Refresh in 60 seconds
             setInterval(function() {
                 ticketcell.src = ticketcell.src;
-                document.getElementById('live').children[0].innerHTML = '<p><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Live Tickets</p>';
+                document.getElementById('live').children[0].children[0].outerHTML = '<p><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Live Tickets</p>';
                 setTimeout(function() {
-                    document.getElementById('live').children[0].innerHTML = '<p><i class="fa fa-list-ul" aria-hidden="true"></i> Live Tickets</p>';
+                    document.getElementById('live').children[0].children[0].outerHTML = '<p><i class="fa fa-list-ul" aria-hidden="true"></i> Live Tickets</p>';
                 }, 3000);
             }, 60000);
             // Remove columms from live ticket page
@@ -1128,6 +1178,23 @@
                 return new bootstrap.Tooltip(tooltipTriggerEl)
             });
         }, 1000);
+        // Minimize top part
+        var minimize = document.getElementById("minimize");
+        var topx = document.getElementById("topx");
+        var tickets = document.getElementById("tickets");
+        minimize.addEventListener("click", function() {
+            if (topx.classList.contains("d-flex")) {
+                topx.classList.add("d-none");
+                topx.classList.remove("d-flex");
+                minimize.classList.add("minimizeTop");
+                tickets.setAttribute("style", "height:100vh");
+            } else if (topx.classList.contains("d-none")) {
+                topx.classList.add("d-flex");
+                topx.classList.remove("d-none");
+                minimize.classList.remove("minimizeTop");
+                tickets.setAttribute("style", "height:calc(100vh - 160px)");
+            }
+        });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>
