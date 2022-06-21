@@ -245,9 +245,14 @@
             z-index: 1;
             background: #c9c9c9;
             border-bottom-left-radius: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            /* left: 50%;
+            transform: translateX(-50%); */
             line-height: 25px;
+            width: 100%;
+        }
+        
+        #time span {
+            font-size: 15px;
         }
         
         .rem {
@@ -1098,10 +1103,10 @@
                     var parm = urlx.searchParams.get("t");
                     if (parm == "skip") {
                         time.innerHTML = tn;
-                        document.getElementById('ctime').innerHTML = "<i class='fa fa-clock-o' aria-hidden='true'></i> Time Now";
+                        document.getElementById('ctime').children[0].children[0].outerHTML = "<p><i class='fa fa-clock-o' aria-hidden='true'></i> Time Now</p>";
                     } else if (parm == "logout") {
-                        time.innerHTML = "Logout NOW!";
-                        document.getElementById('ctime').innerHTML = "<i class='fa fa-clock-o' aria-hidden='true'></i> Time Now";
+                        time.innerHTML = "<span>Logout NOW!</span>";
+                        document.getElementById('ctime').children[0].children[0].outerHTML = "<p><i class='fa fa-clock-o' aria-hidden='true'></i> Time Now</p>";
                     } else {
                         var hx = parm.split(':')[0];
                         var mx = parm.split(':')[1];
