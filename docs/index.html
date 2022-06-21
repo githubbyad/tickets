@@ -153,6 +153,8 @@
         #ctime p,
         #cbuzzer p,
         #past p {
+            display: flex;
+            align-items: center;
             background-color: black;
             margin-bottom: 0;
             position: relative;
@@ -628,7 +630,7 @@
                     </div>
                     <div class="col-x px-1" id="past">
                         <div class="w-100">
-                            <p><i class="fa fa-check-square" aria-hidden="true"></i> Review Past Tickets</p>
+                            <p><i class="fa fa-tasks" aria-hidden="true"></i> Review Past Tickets</p>
                             <iframe id="pticketcell" src="https://bulletlink.one/bulletlink_tickets_review.asp" scrolling="no" class="border-0 w-100"></iframe>
                         </div>
                     </div>
@@ -951,9 +953,12 @@
             // Ticket Page - Refresh in 60 seconds
             setInterval(function() {
                 ticketcell.src = ticketcell.src;
+                pticketcell.src = pticketcell.src;
                 document.getElementById('live').children[0].children[0].outerHTML = '<p><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Live Tickets</p>';
+                document.getElementById('past').children[0].children[0].outerHTML = '<p><i class="fa fa-refresh fa-spin" aria-hidden="true"></i> Review Past Tickets</p>';
                 setTimeout(function() {
                     document.getElementById('live').children[0].children[0].outerHTML = '<p><i class="fa fa-list-ul" aria-hidden="true"></i> Live Tickets</p>';
+                    document.getElementById('past').children[0].children[0].outerHTML = '<p><i class="fa fa-tasks" aria-hidden="true"></i> Review Past Tickets</p>';
                 }, 3000);
             }, 60000);
             // Remove columms from live ticket page
