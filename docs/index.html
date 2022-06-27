@@ -426,7 +426,7 @@
         #past i {
             margin-right: 10px;
             font-size: 18px;
-            color: orange;
+            color: #0d6efd;
         }
         
         #shift span {
@@ -434,8 +434,7 @@
             float: right;
             top: 7px;
             position: absolute;
-            right: 10px;
-            text-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+            right: 0px;
         }
         
         .logout-select-1,
@@ -860,15 +859,15 @@
                 document.getElementById('ctime').children[0].children[0].outerHTML = "<p><i class='fa fa-clock-o' aria-hidden='true'></i> Time Remaining</p>";
             }
             if (window.location.href.indexOf("?t=03:00") != -1) {
-                document.getElementById('shift').children[0].children[0].outerHTML = "<p><i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge rounded-pill bg-danger ms-2'>Night</span></p>";
+                document.getElementById('shift').children[0].children[0].outerHTML = "<p><i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge bg-warning ms-2 text-dark'>Night Shift</span></p>";
                 // document.getElementsByClassName('ticketPage')[0].setAttribute('id', 'shift-dark');
             }
             if (window.location.href.indexOf("?t=11:00") != -1) {
-                document.getElementById('shift').children[0].children[0].outerHTML = "<p><i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge rounded-pill bg-danger ms-2'>Night</span></p>";
+                document.getElementById('shift').children[0].children[0].outerHTML = "<p><i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge bg-warning ms-2 text-dark'>Night Shift</span></p>";
                 // document.getElementsByClassName('ticketPage')[0].setAttribute('id', 'shift-success');
             }
             if (window.location.href.indexOf("?t=19:30") != -1) {
-                document.getElementById('shift').children[0].children[0].outerHTML = "<p><i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge rounded-pill bg-danger ms-2'>Day</span></p>";
+                document.getElementById('shift').children[0].children[0].outerHTML = "<p><i class='fa fa-user' aria-hidden='true'></i> Online Staffs <span class='badge bg-warning ms-2 text-dark'>Day Shift</span></p>";
                 //  document.getElementsByClassName('ticketPage')[0].setAttribute('id', 'shift-secondary');
             }
 
