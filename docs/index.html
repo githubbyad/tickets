@@ -477,6 +477,24 @@
             cursor: pointer;
         }
         
+        .ticketAlways {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background: #212529;
+            z-index: 99;
+            padding: 10px;
+            box-sizing: border-box;
+            border-top-right-radius: 50px;
+            cursor: pointer;
+        }
+        
+        .ticketAlways i {
+            color: #f49d00 !important;
+            font-size: 20px !important;
+            transform: translate(-5px, 5px);
+        }
+        
         .ticketSetting i {
             color: #f49d00 !important;
             font-size: 20px !important;
@@ -662,6 +680,11 @@
             </div>
         </div>
         <div class="ticketSetting"><i class="fa fa-cog" aria-hidden="true"></i></div>
+        <div class="ticketAlways">
+            <i class="fa fa-toggle-on" aria-hidden="true" title="Disable Screen Lock"></i>
+            <i class="fa fa-toggle-off d-none" aria-hidden="true" title="Enable Screen Lock"></i>
+        </div>
+        <div class="ticketAlwaysDIV d-none"></div>
         <div class="ticketSettingList d-none">
             <div class="ticketSettingListBox tsx text-start">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="ticketSettingListClose bi bi-x-lg" viewBox="0 0 16 16">
@@ -671,9 +694,9 @@
                 <h1 class="text-center mb-0 text-white bg-primary px-5 py-3"><i class='fa fa-moon-o me-3 d-none' aria-hidden='true'></i>Settings</h1>
                 <div class="d-block w-100 p-5">
                     <div class="row justify-content-center">
-                        <div class="col-3 fw-bold tNamaz mb-2 me-2 border border-primary p-2 rounded-pill d-flex align-items-center"><i class='fa fa-moon-o ps-2 me-3 text-primary fs-4' aria-hidden='true'></i>Namaz</div>
+                        <div class="col-2 fw-bold tNamaz mb-2 me-2 border border-primary p-2 rounded-pill d-flex align-items-center"><i class='fa fa-moon-o ps-2 me-3 text-primary fs-4' aria-hidden='true'></i>Namaz</div>
                         <div class="col-3 fw-bold tLunch mb-2 me-2 border border-primary p-2 rounded-pill d-flex align-items-center"><i class='fa fa-cutlery ps-2 me-3 text-primary fs-4' aria-hidden='true'></i>Lunch / Dinner</div>
-                        <div class="col-3 fw-bold tSound mb-2  border border-primary p-2 rounded-pill d-flex align-items-center"><i class='fa fa-volume-up ps-2 me-3 text-primary fs-4' aria-hidden='true'></i>Sounds</div>
+                        <div class="col-2 fw-bold tSound mb-2 me-2  border border-primary p-2 rounded-pill d-flex align-items-center"><i class='fa fa-volume-up ps-2 me-3 text-primary fs-4' aria-hidden='true'></i>Sounds</div>
                     </div>
                 </div>
             </div>
@@ -769,6 +792,20 @@
                 document.getElementsByTagName('body')[0].innerHTML = "<h1 class='nomobile'>This page is only accessible on Computer</h1>";
             }
 
+            // Always Screen ON/OFF
+            document.getElementsByClassName("ticketAlways")[0].addEventListener("click", () => {
+                document.querySelectorAll(".ticketAlways i").forEach(c => c.classList.toggle("d-none"));
+                if (document.getElementsByClassName("fa-toggle-off")[0].classList.contains("d-none") == false) {
+                    document.getElementsByClassName("ticketAlwaysDIV")[0].insertAdjacentHTML(`afterbegin`, `
+                <video width="400" controls autoplay muted loop>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                    Your browser does not support HTML video.
+                </video>`);
+                } else {
+                    document.getElementsByClassName("ticketAlwaysDIV")[0].innerHTML = "";
+                }
+            });
             // Setting
             document.getElementsByClassName("ticketSetting")[0].addEventListener("click", function() {
                 document.getElementsByClassName("ticketSettingList")[0].classList.remove("d-none");
@@ -1266,6 +1303,7 @@
             document.getElementById('ticketSpan').innerHTML = "<div class='logout-cont logout-cont2'><i class='fa fa-exclamation-triangle mb-5 text-dark' style='font-size:6rem;color:gray !important;' aria-hidden='true'></i><br><h5>This ticket page will only work with <span class='text-danger'>FireFox</span> browser.<br><br>Thank you.</h5></div>";
         }
     </script>
+
 </body>
 
 </html>
