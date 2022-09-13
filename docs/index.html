@@ -640,6 +640,17 @@
         .ticketAlways.tActive i {
             color: white !important;
         }
+        
+        .tSpan {
+            position: absolute;
+            background: green;
+            border-top-right-radius: 50px;
+            padding: 7px;
+            left: 28px;
+            border: 0;
+            font-weight: bold;
+            color: white !important;
+        }
     </style>
 </head>
 
@@ -690,6 +701,7 @@
         <div class="ticketSetting"><i class="fa fa-cog" aria-hidden="true"></i></div>
         <div class="ticketAlways" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Browser Screen Setting">
             <i class="fa fa-desktop" aria-hidden="true"></i>
+            <span class="tSpan d-none"></span>
         </div>
         <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -705,10 +717,11 @@
                         <button type="button" class="buttonY btn btn-primary px-5 tYes">Yes</button>
                         <button type="button" class="buttonY btn btn-danger tNo px-5" data-bs-dismiss="modal">No</button>
                         <div class="modal-select d-none">
-                            <button type="button" class="buttonZ btn btn-secondary t-30m me-2" data-bs-dismiss="modal">30 Minutes</button>
-                            <button type="button" class="buttonZ btn btn-secondary t-1h me-2 px-2" data-bs-dismiss="modal">1 Hour</button>
-                            <button type="button" class="buttonZ btn btn-secondary t-2h me-2 px-2" data-bs-dismiss="modal">2 Hours</button>
-                            <button type="button" class="buttonZ btn btn-dark t-frv px-4" data-bs-dismiss="modal">Forever</button>
+                            <button type="button" class="buttonZ btn btn-secondary t-15m me-2 mb-2" data-bs-dismiss="modal">15 Minutes</button>
+                            <button type="button" class="buttonZ btn btn-secondary t-30m me-2 mb-2" data-bs-dismiss="modal">30 Minutes</button>
+                            <button type="button" class="buttonZ btn btn-secondary t-1h me-2 px-4 mb-2" data-bs-dismiss="modal">1 Hour</button>
+                            <button type="button" class="buttonZ btn btn-secondary t-2h me-2 px-4 mb-2" data-bs-dismiss="modal">2 Hours</button>
+                            <center><button type="button" class="buttonZ btn btn-dark t-frv px-4 mb-2" data-bs-dismiss="modal">Forever</button></center>
                         </div>
                     </div>
                 </div>
@@ -825,6 +838,7 @@
             // Always Screen ON/OFF
             document.getElementsByClassName("tNo")[0].addEventListener("click", () => {
                 document.getElementsByClassName("ticketAlways")[0].classList.remove("tActive");
+                document.getElementsByClassName("tSpan")[0].classList.add("d-none")
                 document.getElementsByClassName("ticketAlwaysDIV")[0].innerHTML = "";
             });
             document.getElementsByClassName("tYes")[0].addEventListener("click", () => {
@@ -847,14 +861,18 @@
                 });
             });
 
-            tX = (t) => {
+            tX = (t, v) => {
+                document.getElementsByClassName("tSpan")[0].classList.remove("d-none");
+                document.getElementsByClassName("tSpan")[0].innerHTML = v;
                 setTimeout(() => {
                     document.getElementsByClassName("tNo")[0].click();
                 }, t);
             }
-            document.getElementsByClassName("t-30m")[0].addEventListener("click", () => tX("1800000"));
-            document.getElementsByClassName("t-1h")[0].addEventListener("click", () => tX("3600000"));
-            document.getElementsByClassName("t-2h")[0].addEventListener("click", () => tX("7200000"));
+            document.getElementsByClassName("t-15m")[0].addEventListener("click", () => tX("900000", "15m"));
+            document.getElementsByClassName("t-30m")[0].addEventListener("click", () => tX("1800000", "30m"));
+            document.getElementsByClassName("t-1h")[0].addEventListener("click", () => tX("3600000", "1h"));
+            document.getElementsByClassName("t-2h")[0].addEventListener("click", () => tX("7200000", "2h"));
+            document.getElementsByClassName("t-frv")[0].addEventListener("click", () => document.getElementsByClassName("tSpan")[0].classList.add("d-none"));
 
             // Setting
             document.getElementsByClassName("ticketSetting")[0].addEventListener("click", function() {
