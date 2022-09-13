@@ -702,8 +702,14 @@
                         <i class='fa fa-desktop mb-3 text-success' style='font-size:5rem;' aria-hidden='true'></i><br>Do you want your browser's screen to be "<span style='color:red'>Always ON</span>"?
                     </div>
                     <div class="modal-footer d-flex justify-content-center">
-                        <button type="button" class="btn btn-primary px-5 tYes">Yes</button>
-                        <button type="button" class="btn btn-danger tNo px-5" data-bs-dismiss="modal">No</button>
+                        <button type="button" class="buttonY btn btn-primary px-5 tYes">Yes</button>
+                        <button type="button" class="buttonY btn btn-danger tNo px-5" data-bs-dismiss="modal">No</button>
+                        <div class="modal-select d-none">
+                            <button type="button" class="buttonZ btn btn-secondary t-30m me-2" data-bs-dismiss="modal">30 Minutes</button>
+                            <button type="button" class="buttonZ btn btn-secondary t-1h me-2 px-2" data-bs-dismiss="modal">1 Hour</button>
+                            <button type="button" class="buttonZ btn btn-secondary t-2h me-2 px-2" data-bs-dismiss="modal">2 Hours</button>
+                            <button type="button" class="buttonZ btn btn-dark t-frv px-4" data-bs-dismiss="modal">Forever</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -822,7 +828,8 @@
                 document.getElementsByClassName("ticketAlwaysDIV")[0].innerHTML = "";
             });
             document.getElementsByClassName("tYes")[0].addEventListener("click", () => {
-                document.getElementsByClassName("tNo")[0].click();
+                document.querySelectorAll(".buttonY").forEach(x => x.classList.add("d-none"));
+                document.getElementsByClassName("modal-select")[0].classList.remove("d-none");
                 document.getElementsByClassName("ticketAlwaysDIV")[0].innerHTML = `
                 <video width="400" controls autoplay muted loop>
                     <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
@@ -831,6 +838,24 @@
                 </video>`;
                 document.getElementsByClassName("ticketAlways")[0].classList.add("tActive");
             });
+            document.querySelectorAll(".buttonZ").forEach(x => {
+                x.addEventListener("click", () => {
+                    setTimeout(() => {
+                        document.querySelectorAll(".buttonY").forEach(x => x.classList.remove("d-none"));
+                        document.getElementsByClassName("modal-select")[0].classList.add("d-none");
+                    }, 500);
+                });
+            });
+
+            function tX(t) {
+                setTimeout(() => {
+                    document.getElementsByClassName("tNo")[0].click();
+                }, t);
+            }
+            document.getElementsByClassName("t-30m")[0].addEventListener("click", () => tX("1800000"));
+            document.getElementsByClassName("t-1h")[0].addEventListener("click", () => tX("3600000"));
+            document.getElementsByClassName("t-2h")[0].addEventListener("click", () => tX("7200000"));
+
             // Setting
             document.getElementsByClassName("ticketSetting")[0].addEventListener("click", function() {
                 document.getElementsByClassName("ticketSettingList")[0].classList.remove("d-none");
