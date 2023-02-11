@@ -592,12 +592,18 @@
             z-index: 999;
             background: #212529;
             width: auto;
-            left: 0%;
+            right: 0%;
             border-bottom-left-radius: 50px;
             justify-content: center;
             box-sizing: border-box;
             cursor: pointer;
             padding: 15px;
+        }
+        
+        .dark i {
+            color: #f49d00 !important;
+            font-size: 20px !important;
+            transform: scale(1.2) translate(5px, -4px);
         }
         
         .darkTop {
@@ -716,8 +722,8 @@
                 </div>
                 <div id="minimize"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
                 <div class="dark">
-                    <i class="fa fa-moon-o dark_moon" aria-hidden="true"></i>
-                    <i class="fa fa-sun-o dark_sun d-none" aria-hidden="true"></i>
+                    <i class="fa fa-moon-o dark_moon" title="Night Mode" aria-hidden="true"></i>
+                    <i class="fa fa-sun-o dark_sun d-none" title="Day Mode" aria-hidden="true"></i>
                 </div>
                 <div id="topy" class="ticket_page col-12 position-relative bg-body px-0" style="z-index: 2;">
                     <iframe id="tickets" src="https://bulletlink.one/bulletlink_tickets.asp?" class="border-0 w-100 px-0" style="height: calc(100vh - 160px);"></iframe>
@@ -1393,7 +1399,7 @@
             tickets.setAttribute("style", "height:calc(100vh)");
         }
         dark.addEventListener('click', () => {
-            document.querySelector('#ticketPage').classList.toggle('darkEnable');
+            document.querySelector('.ticketPage').classList.toggle('darkEnable');
             document.querySelector('.dark_moon').classList.toggle('d-none');
             document.querySelector('.dark_sun').classList.toggle('d-none');
         });
